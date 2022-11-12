@@ -73,4 +73,4 @@ regex=/^([a-zA-Z0-9\.-]+)@([a-zA-Z0-9-]+).([a-z]{2,20})([.[a-z]{2,8})? $/;    //
 \w - match any word character (a-z, A-Z,0-9 & _)
 ^$ - ^ means starting point and $ means ends with . So if ^abc$ -- will only accept abc just. No extra letter before  it and after abc.
 
-// var regex3=
+*/
