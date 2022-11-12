@@ -28,3 +28,49 @@ if(regex.test(str)){
 }else{
     console.log(`The string ${str} does not matches the expression ${regex.source}`);
 }
+
+/* email validation:
+Conditions:
+(yourname)@(domain).(extension)(.extension ---optional)
+eg--
+kirti@validation.co.in
+kirti@validation.com
+
+
+var regex=/^ $/; //means whatever we will put inside the / / , that should be the exact match . Nothing should be inserted before or after the regex
+
+---4 parts so 4 parts ()
+regex=/^ ()()()() $/;
+
+1.(your name)- Any letters,numbers,dot and /or hyphens.
+regex=/^([a-zA-Z0-9\.-])()()()$/;  //this character set([a-zA-Z0-9\.-])  just tells about the first character.But we can have muliple chars. So we'll add quantifier also.        // we can have any a-z or A-Z or 0-9 or . or -  ( we cann't write the dot . as it is in the [] char set bcz . is metaCharacter. So to add . as option in [] use \ i.e., \.)
+regex=/^([a-zA-Z0-9\.-]{2,10})()()()$/;   // {2,10} -- {min,mac} is hard coded . As name can be of any length. So its better to + , which is also a quantifier. And its means o+ (means o should be atleast one).
+regex=/^([a-zA-Z0-9\.-]+)()()()$/;   // + means dynamic count of numbers.
+
+2.( @ )
+regex=/^([a-zA-Z0-9\.-]+)@()()()$/;
+
+
+3.(domain) - Any letter,number and/or hyphen (-). (cann't have dot)
+regex=/^([a-zA-Z0-9\.-]+)@([a-zA-Z0-9-]+)()()$/;   //2nd character set  //similar to yourname. Except dot.
+
+
+4. (dot) 
+regex=/^([a-zA-Z0-9\.-]+)@([a-zA-Z0-9-]+).()()$/; 
+
+
+5.(extension)- Any letter(a-z)
+regex=/^([a-zA-Z0-9\.-]+)@([a-zA-Z0-9-]+).([a-z]{2,8})()$/;   // 3rd character set-  with any character from a-z with min-2 chars and max-8 chars
+
+
+
+6.(extension ----optional) - a dot(.) then any letter
+regex=/^([a-zA-Z0-9\.-]+)@([a-zA-Z0-9-]+).([a-z]{2,20})([.[a-z]{2,8})? $/;    //4th character set- we added . then a-z char with range{2 to 8} and this part is optional .So we add ? at the last
+
+
+
+\d - match any digit(equal to [0-9])
+\w - match any word character (a-z, A-Z,0-9 & _)
+^$ - ^ means starting point and $ means ends with . So if ^abc$ -- will only accept abc just. No extra letter before  it and after abc.
+
+// var regex3=
